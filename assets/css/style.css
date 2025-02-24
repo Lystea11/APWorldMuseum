@@ -1,0 +1,180 @@
+/* assets/css/style.css - Updated for fixed, centered screens and new textbox screen layout */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #ffffff;
+  color: #333;
+  overflow: hidden; /* Prevent scrolling since screens are fixed */
+}
+
+/* The exhibition title is centered */
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  font-weight: 500;
+}
+
+/* Use a container only if needed for global elements; otherwise, screens are fixed */
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* All screens (except the textbox screen) are fixed and centered */
+.screen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  
+  /* Hidden by default */
+  display: none;
+  opacity: 0;
+  transform: translate(-50%, calc(-50% + 20px));
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.screen.active {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+/* Differentiated backgrounds for inquiry and claim screens */
+#screen-1 {
+  background: linear-gradient(135deg, #f7f9fc, #ffffff);
+}
+#screen-2 {
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+}
+
+/* Primary source selection title styling */
+.title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+/* Button styling for general use */
+.button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.button:hover {
+  transform: scale(1.03);
+  background-color: #0056b3;
+  cursor: pointer;
+}
+
+/* Primary source buttons styling */
+.primary-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.primary-source-button {
+  flex: 1;
+  padding: 25px;
+  font-size: 18px;
+  background: linear-gradient(135deg, #0056b3, #0560c1);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.primary-source-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #218838, #1e7e34);
+}
+
+/* New styling for the textbox screen */
+#textbox-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  background-color: #fff;
+  /* Instead of centering the whole element, we use flex column to place the textbox on top and button below */
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#textbox-screen.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* The textbox takes up most of the available height */
+.textbox {
+  width: 100%;
+  height: 70vh;
+  padding: 15px;
+  font-size: 16px;
+  border: 2px solid #007BFF;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fafafa;
+  resize: none;
+  margin-bottom: 20px;
+}
+
+/* Styling for the "View Other Source" button */
+.view-button {
+  width: 100%;
+  max-width: 600px;
+  padding: 15px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.view-button:hover {
+  transform: scale(1.03);
+  background-color: #0056b3;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .button, .primary-source-button, .view-button {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
